@@ -7,8 +7,9 @@ var HTMLROUTE = function()
 {
     this.getPage = function(theApp)
     {
-        //console.log("htmlRoutes -> getPage(" + page + ")");
-        console.log("htmlRoutes -> getPage()");
+        // console.log("htmlRoutes -> getPage(" + page + ")");
+        // console.log("htmlRoutes -> getPage()");
+        // console.log("APP.path: " + "\n" + theApp.path);
 
         // A GET Route to /survey which should display the survey page.
         theApp.get("/survey", function(req, res) 
