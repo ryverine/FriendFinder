@@ -23,11 +23,14 @@ var FRIENDS = function()
 {
     this.getFriends = function()
     {
+        console.log("friends js -> getFriends()" + "\n" +
+                    "friends[0].name = " + friends[0].name);
         return friends;
     };
 
     this.addFriend = function(theFriend)
     {
+        console.log("friends js -> addFriend()");
         friends.push(theFriend);
     };
 }

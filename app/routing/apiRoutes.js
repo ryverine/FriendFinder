@@ -13,8 +13,7 @@ var FRIENDS = require("../data/friends");
 var friends = new FRIENDS();
 var friendsList = friends.getFriends();
 
-
-
+console.log("apiRoutes -> friendsList[1].name = " + friendsList[1].name);
 
 // A GET route with the url /api/friends. This will be used to display a JSON of all possible friends.
 router.get("/api/friends", function(req, res) 
@@ -24,8 +23,10 @@ router.get("/api/friends", function(req, res)
     // res.sendFile(path.resolve("app/public/survey.html"));
 
 
-    console.log("friendsList: " + "\n" + friendsList)
+    console.log("friendsList: " + "\n" + friendsList);
     res.json(friendsList);
+
+    console.log("apiRouts -? /api/friends -> GET");
 });
     
 // A POST routes /api/friends. This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic.
@@ -35,9 +36,10 @@ router.post("/api/friends", function(req, res)
     // res.send(result.toString());
     // res.sendFile(path.resolve("app/public/home.html"));
 
-    var newFriend = req.body;
+    //var newFriend = req.body;
     // friends.push(newFriend);
     // res.json(newFriend);
+    console.log("apiRouts -? /api/friends -> POST");
 
 });
 
