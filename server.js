@@ -14,26 +14,26 @@ var PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var htmlRoute = new PAGE();
-var apiRoute = new API();
-
-/*
-app.get("*", function(req, res) 
-{
-    // var operation = req.params.action.toLowerCase();
-    // res.send(result.toString());
-    // res.sendFile(path.resolve("app/public/home.html"));
-    
-    //console.log("SERVER JS -> ANY PAGE");
-});
-*/
-
 app.listen(PORT, function() 
 {
     console.log("App listening on PORT " + PORT);
-    apiRoute.processAPI(app); // do this before htmlRoute?
-    htmlRoute.getPage(app);
 });
+
+app.use('/survey', PAGE);
+
+app.use('*', PAGE);
+
+
+
+/*
+// IDEA: use this and then direct to app.use based on 
+
+router.get("*", function(req, res) 
+{
+    console.log("ROUTER: htmlRoutes -> /home");
+    res.sendFile(path.resolve("app/public/home.html"));
+});
+*/
 
 
   
