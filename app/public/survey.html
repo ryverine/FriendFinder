@@ -14,10 +14,6 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         -->
 
-		<!-- my css 
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        -->
-
 		<!-- jQuery -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -25,75 +21,261 @@
 
 	<body>
 		<div class="container">
-			
 			<div class="row" id="header">
 				<div  class="col-12">
-                    <h1>FriendFinder</h1>
-				</div>
-			</div> <!-- /row -->
-
-			<div class="row" >
-				<div class="col-3">
-					<a href="/home">Home</a>
-				</div>
-				<div class="col-3">
-					<a href="/survey">Survey</a>
-				</div>
-				<div class="col-3">
-					<a href="/api/friends">Friends Data</a>
-				</div>
-			</div> <!-- /row -->
-
-			<div class="row" >
-				<div class="col-12">
-					<h3>Survey Questions</h3>
-					<div>
-							
-							
-							<h4>>About You</h4>
-							
-							<strong>Name</strong> (Required)
-							
-							<strong>Link to Photo Image</strong> (Required)
-							
-							<strong>Question 1</strong>
-							Your mind is always buzzing with unexplored ideas and plans.
-							
-							<strong>Question 2</strong>
-							Generally speaking, you rely more on your experience than your imagination.
-							
-							<strong>Question 3</strong>
-							You find it easy to stay relaxed and focused even when there is some pressure.
-							
-							<strong>Question 4</strong>
-							You rarely do something just out of sheer curiosity.
-							
-							<strong>Question 5</strong>
-							People can rarely upset you.
-							
-							<strong>Question 6</strong>
-							It is often difficult for you to relate to other people’s feelings.
-							
-							<strong>Question 7</strong>
-							In a discussion, truth should be more important than people’s sensitivities.
-							
-							<strong>Question 8</strong>
-							You rarely get carried away by fantasies and ideas.
-							
-							<strong>Question 9</strong>
-							You think that everyone’s views should be respected regardless of whether they are supported by facts or not.
-							
-							<strong>Question 10</strong>
-							You feel more energetic after spending time with a group of people.
-							 
+					<div class="jumbotron jumbotron-fluid">
+						<div class="container">
+							<h1 class="display-4">FriendFinder</h1>
+							<div>
+								<a href="/home"><button type="button" class="btn btn-primary">Home</button></a>
+								<a href="/survey"><button type="button" class="btn btn-primary">Survey</button></a>
+								<a href="/api/friends"><button type="button" class="btn btn-primary">Friends Data</button></a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div> <!-- /row -->
+				
+			<div class="row" >
+				<div class="col-12">
+					<h3>Survey Questions</h3>
+					<div>	    
+						<forms>
+						<h4>>About You</h4>
 
-	
+						<div><strong>Name:</strong> (Required)</div>
+						<div><input type="text" id="name"></div>
 
+						<div><strong>Link to Photo Image</strong> (Required)</div>
+						<div><input type="text" id="imgUrl"></div>
+
+						<div><strong>Question 1</strong></div>
+						<div>Your mind is always buzzing with unexplored ideas and plans.</div>
+						<div>
+							<select id="ans-01">
+								<option value="" selected disabled hidden>Select...</option>
+								<option value="1">1 (strongly disagree)</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5 (strongly agree)</option>
+							</select>
+						</div>
+
+						<div>><strong>Question 2</strong></div>
+						<div>Generally speaking, you rely more on your experience than your imagination.</div>
+						<div>
+							<select id="ans-02">
+								<option value="" selected disabled hidden>Select...</option>
+								<option value="1">1 (strongly disagree)</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5 (strongly agree)</option>
+							</select>
+						</div>
+
+						<div><strong>Question 3</strong></div>
+						<div>You find it easy to stay relaxed and focused even when there is some pressure.</div>
+						<div>
+							<select id="ans-03">
+								<option value="" selected disabled hidden>Select...</option>
+								<option value="1">1 (strongly disagree)</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5 (strongly agree)</option>
+							</select>
+						</div>
+
+						<div><strong>Question 4</strong></div>
+						<div>You rarely do something just out of sheer curiosity.</div>
+						<div>
+							<select id="ans-04">
+								<option value="" selected disabled hidden>Select...</option>
+								<option value="1">1 (strongly disagree)</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5 (strongly agree)</option>
+							</select>
+						</div>
+
+						<div><strong>Question 5</strong></div>
+						<div>People can rarely upset you.</div>
+						<div>
+							<select id="ans-05">
+								<option value="" selected disabled hidden>Select...</option>
+								<option value="1">1 (strongly disagree)</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5 (strongly agree)</option>
+							</select>
+						</div>
+
+						<div><strong>Question 6</strong></div>
+						<div>It is often difficult for you to relate to other people’s feelings.</div>
+						<div>
+							<select id="ans-06">
+								<option value="" selected disabled hidden>Select...</option>
+								<option value="1">1 (strongly disagree)</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5 (strongly agree)</option>
+							</select>
+						</div>
+
+						<div><strong>Question 7</strong></div>
+						<div>In a discussion, truth should be more important than people’s sensitivities.</div>
+						<div>
+							<select id="ans-07">
+								<option value="" selected disabled hidden>Select...</option>
+								<option value="1">1 (strongly disagree)</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5 (strongly agree)</option>
+							</select>
+						</div>
+
+						<div><strong>Question 8</strong></div>
+						<div>You rarely get carried away by fantasies and ideas.</div>
+						<div>
+							<select id="ans-08">
+								<option value="" selected disabled hidden>Select...</option>
+								<option value="1">1 (strongly disagree)</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5 (strongly agree)</option>
+							</select>
+						</div>
+
+						<div><strong>Question 9</strong></div>
+						<div>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</div>
+						<div>
+							<select id="ans-09">
+								<option value="" selected disabled hidden>Select...</option>
+								<option value="1">1 (strongly disagree)</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5 (strongly agree)</option>
+							</select>
+						</div>
+
+						<div><strong>Question 10</strong></div>
+						<div>You feel more energetic after spending time with a group of people.</div>
+						<div>
+							<select id="ans-10">
+								<option value="" selected disabled hidden>Select...</option>
+								<option value="1">1 (strongly disagree)</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5 (strongly agree)</option>
+							</select>
+						</div>
+					</div>
+					<div>
+						<input type="submit" id="btn-submit" class="btn btn-primary" value="Submit Survey">
+					</div>
+					<div id="messageText"></div>
+				</form>
+
+				</div>
+			</div> <!-- /row -->
 		<div> <!-- /container -->
-		<!--<script type="text/javascript" src="assets/javascript/app.js"></script> -->
+
+		<script>
+				$("#btn-submit").on("click", function(event) 
+				{
+					event.preventDefault();
+					  
+					var contentError = surveyComplete();
+					$("#messageText").text(contentError);
+
+					if(contentError === "")
+					{
+							
+						/*var selections = [	Number.parseInt(("#ans-01").find(":selected").text()),
+											Number.parseInt(("#ans-02").find(":selected").text()),
+											Number.parseInt(("#ans-03").find(":selected").text()),
+											Number.parseInt(("#ans-04").find(":selected").text()),
+											Number.parseInt(("#ans-05").find(":selected").text()),
+											Number.parseInt(("#ans-06").find(":selected").text()),
+											Number.parseInt(("#ans-08").find(":selected").text()),
+											Number.parseInt(("#ans-09").find(":selected").text()),
+											Number.parseInt(("#ans-10").find(":selected").text())];
+
+						var newFriend = {	name: $("#name").val().trim(), 
+											photo: $("#imgUrl").val().trim(),
+											scores: answers};
+
+					
+						*/
+
+						// "name":"Ruky Chookie",
+						// "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+						// "scores":[5,1,4]	
+
+						/*$.post("/api/friends", newCharacter)
+						.then(function(data) 
+						{
+							console.log(data);
+							alert("Adding friend...");
+
+							// NEED TO FIND BEST FRIEND MATCH
+						
+						});*/
+
+						alert("Thank you!" + "\n" + "Survey submitted.");
+					}
+				});
+
+				function surveyComplete()
+				{
+					var allAnswers = true;
+					var selections = [	$("#ans-01").find(":selected").text(),
+										$("#ans-02").find(":selected").text(),
+										$("#ans-03").find(":selected").text(),
+										$("#ans-04").find(":selected").text(),
+										$("#ans-05").find(":selected").text(),
+										$("#ans-06").find(":selected").text(),
+										$("#ans-07").find(":selected").text(),
+										$("#ans-08").find(":selected").text(),
+										$("#ans-09").find(":selected").text(),
+										$("#ans-10").find(":selected").text()];
+
+					for (var i = 0; i < selections.length; i++)
+					{
+						if(selections[i].toLowerCase() === "select...")
+						{
+							allAnswers = false;
+							break;
+						}
+					}
+					
+					if($("#name").val().trim() === "")
+					{
+						return "Please provide your name.";
+					}
+					else if ($("#imgUrl").val().trim() === "")
+					{
+						return "Please provide a URL to a photo."
+					}
+					else if (!allAnswers)
+					{
+						return "Please answer all questions."
+					}
+					else
+					{
+						return "";
+					}
+				}
+		</script>
 	</body>
 </html>
 

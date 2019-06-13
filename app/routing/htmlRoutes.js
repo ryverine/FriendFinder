@@ -12,14 +12,14 @@ var path = require("path");
 
 router.get('/survey', function (req, res) 
 {
-    console.log("ROUTER: htmlRoutes -> /survey");
+    // console.log("ROUTER: htmlRoutes -> /survey");
     res.sendFile(path.resolve("app/public/survey.html"));
 });
 
 
 router.get("*", function(req, res) 
 {
-    console.log("ROUTER: htmlRoutes -> /home");
+    // console.log("ROUTER: htmlRoutes -> /home");
     res.sendFile(path.resolve("app/public/home.html"));
 });
 
