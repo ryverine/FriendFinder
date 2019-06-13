@@ -17,6 +17,12 @@
 		<!-- jQuery -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+		<style media="screen">
+			div {
+			  padding: 5px;
+			}
+		</style>
+
 	</head>
 
 	<body>
@@ -49,8 +55,7 @@
 						<div><strong>Link to Photo Image</strong> (Required)</div>
 						<div><input type="text" id="imgUrl"></div>
 
-						<div><strong>Question 1</strong></div>
-						<div>Your mind is always buzzing with unexplored ideas and plans.</div>
+						<div><strong>Question 1: </strong>Your mind is always buzzing with unexplored ideas and plans.</div>
 						<div>
 							<select id="ans-01">
 								<option value="" selected disabled hidden>Select...</option>
@@ -62,8 +67,7 @@
 							</select>
 						</div>
 
-						<div>><strong>Question 2</strong></div>
-						<div>Generally speaking, you rely more on your experience than your imagination.</div>
+						<div><strong>Question 2: </strong>Generally speaking, you rely more on your experience than your imagination.</div>
 						<div>
 							<select id="ans-02">
 								<option value="" selected disabled hidden>Select...</option>
@@ -75,8 +79,7 @@
 							</select>
 						</div>
 
-						<div><strong>Question 3</strong></div>
-						<div>You find it easy to stay relaxed and focused even when there is some pressure.</div>
+						<div><strong>Question 3: </strong>You find it easy to stay relaxed and focused even when there is some pressure.</div>
 						<div>
 							<select id="ans-03">
 								<option value="" selected disabled hidden>Select...</option>
@@ -88,8 +91,7 @@
 							</select>
 						</div>
 
-						<div><strong>Question 4</strong></div>
-						<div>You rarely do something just out of sheer curiosity.</div>
+						<div><strong>Question 4: </strong> You rarely do something just out of sheer curiosity.</div>
 						<div>
 							<select id="ans-04">
 								<option value="" selected disabled hidden>Select...</option>
@@ -101,8 +103,7 @@
 							</select>
 						</div>
 
-						<div><strong>Question 5</strong></div>
-						<div>People can rarely upset you.</div>
+						<div><strong>Question 5: </strong>People can rarely upset you.</div>
 						<div>
 							<select id="ans-05">
 								<option value="" selected disabled hidden>Select...</option>
@@ -114,8 +115,7 @@
 							</select>
 						</div>
 
-						<div><strong>Question 6</strong></div>
-						<div>It is often difficult for you to relate to other people’s feelings.</div>
+						<div><strong>Question 6: </strong>It is often difficult for you to relate to other people’s feelings.</div>
 						<div>
 							<select id="ans-06">
 								<option value="" selected disabled hidden>Select...</option>
@@ -127,8 +127,7 @@
 							</select>
 						</div>
 
-						<div><strong>Question 7</strong></div>
-						<div>In a discussion, truth should be more important than people’s sensitivities.</div>
+						<div><strong>Question 7: </strong>In a discussion, truth should be more important than people’s sensitivities.</div>
 						<div>
 							<select id="ans-07">
 								<option value="" selected disabled hidden>Select...</option>
@@ -140,8 +139,7 @@
 							</select>
 						</div>
 
-						<div><strong>Question 8</strong></div>
-						<div>You rarely get carried away by fantasies and ideas.</div>
+						<div><strong>Question 8: </strong>You rarely get carried away by fantasies and ideas.</div>
 						<div>
 							<select id="ans-08">
 								<option value="" selected disabled hidden>Select...</option>
@@ -153,8 +151,7 @@
 							</select>
 						</div>
 
-						<div><strong>Question 9</strong></div>
-						<div>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</div>
+						<div><strong>Question 9: </strong>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</div>
 						<div>
 							<select id="ans-09">
 								<option value="" selected disabled hidden>Select...</option>
@@ -166,8 +163,7 @@
 							</select>
 						</div>
 
-						<div><strong>Question 10</strong></div>
-						<div>You feel more energetic after spending time with a group of people.</div>
+						<div><strong>Question 10: </strong>You feel more energetic after spending time with a group of people.</div>
 						<div>
 							<select id="ans-10">
 								<option value="" selected disabled hidden>Select...</option>
@@ -194,58 +190,83 @@
 				{
 					event.preventDefault();
 					
-					var contentError = surveyComplete();
-					$("#messageText").html("<h4>" + contentError + "</h4>");
+					var error = surveyError();
+					$("#messageText").html("<h4>" + error + "</h4>");
 
-					if(contentError === "")
+					
+
+					if(error === "")
 					{
-						var answers = [	Number.parseInt($("#ans-01").find(":selected").val()),
-										Number.parseInt($("#ans-02").find(":selected").val()),
-										Number.parseInt($("#ans-03").find(":selected").val()),
-										Number.parseInt($("#ans-04").find(":selected").val()),
-										Number.parseInt($("#ans-05").find(":selected").val()),
-										Number.parseInt($("#ans-06").find(":selected").val()),
-										Number.parseInt($("#ans-07").find(":selected").val()),
-										Number.parseInt($("#ans-08").find(":selected").val()),
-										Number.parseInt($("#ans-09").find(":selected").val()),
-										Number.parseInt($("#ans-10").find(":selected").val())];
+						var answers = [	$("#ans-01").find(":selected").val(),
+										$("#ans-02").find(":selected").val(),
+										$("#ans-03").find(":selected").val(),
+										$("#ans-04").find(":selected").val(),
+										$("#ans-05").find(":selected").val(),
+										$("#ans-06").find(":selected").val(),
+										$("#ans-07").find(":selected").val(),
+										$("#ans-08").find(":selected").val(),
+										$("#ans-09").find(":selected").val(),
+										$("#ans-10").find(":selected").val()];
 						
-						for( var i = 0; i<answers.length; i++)
+						var answers_int = [];
+
+						for( var i = 0; i < answers.length; i++)
 						{
-							answers[i] = Number.parseInt(answers[i]);
+							answers_int.push(Number.parseInt(answers[i]));
 						}
 
 						var newFriend = {	name: $("#name").val().trim(), 
 											photo: $("#imgUrl").val().trim(),
-											scores: answers};
+											scores: answers_int};
 
+						addFriend(newFriend);
 
+						/// SEND newFriend to compareFriends()
 
-						$.post("/api/friends", newFriend)
-						.then(function(data) 
-						{
-							console.log(data);
-							alert("Thank you!" + "\n" + "Survey submitted.");
-							$("#name").val("");
-							photo: $("#imgUrl").val("");
-							$("#ans-01").val("");
-							$("#ans-02").val("");
-							$("#ans-03").val("");
-							$("#ans-04").val("");
-							$("#ans-05").val("");
-							$("#ans-06").val("");
-							$("#ans-07").val("");
-							$("#ans-08").val("");
-							$("#ans-09").val("");
-							$("#ans-10").val("");
-
-							// NEED TO FIND BEST FRIEND MATCH
-						
-						});
 					}
 				});
 
-				function surveyComplete()
+				function compareFriends(newFriend)
+				{
+					$.get("/api/friends/", function(data) 
+					{
+						console.log("API DATA: " + "\n" + JSON.stringify(data));
+						
+						console.log("Current Friends: " + data.length);
+
+						for (var i = 0; i < data.length; i++)
+						{
+							console.log("friendsList["+i+"]" + "\n" + JSON.stringify(friendsList[i]));
+						}
+					});
+				}
+
+				function addFriend(newFriend)
+				{
+					$.post("/api/friends", newFriend).then(function(data) 
+					{
+						console.log(data);
+						
+						$("#name").val("");
+						photo: $("#imgUrl").val("");
+						$("#ans-01").val("");
+						$("#ans-02").val("");
+						$("#ans-03").val("");
+						$("#ans-04").val("");
+						$("#ans-05").val("");
+						$("#ans-06").val("");
+						$("#ans-07").val("");
+						$("#ans-08").val("");
+						$("#ans-09").val("");
+						$("#ans-10").val("");
+
+						alert("Thank you!" + "\n" + "Survey submitted.");
+					});
+				}
+
+
+
+				function surveyError()
 				{
 					var allAnswers = true;
 					var selections = [	$("#ans-01").find(":selected").text(),

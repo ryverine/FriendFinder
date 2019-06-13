@@ -6,16 +6,24 @@ router.use(express.json());
 
 var FRIENDS = require("../data/friends");  
 var friends = new FRIENDS();
+var friendsList = friends.getFriends();
 
 router.get("/api/friends", function(req, res) 
 {
+    
     res.json(friendsList);
 });
 
 router.post("/api/friends", function(req, res) 
 {
     var newFriend = req.body;
-    var friendsList = friends.getFriends();
+    +
+    console.log("Friends = " + friendsList.length);
+
+    for (var i = 0; i < friendsList.length; i++)
+    {
+        console.log("friendsList["+i+"]" + "\n" + JSON.stringify(friendsList[i]));
+    }
 
     // Step 1: get number of current friends
     // step 2: need array that will hold final score for each friend
