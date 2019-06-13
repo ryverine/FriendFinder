@@ -193,22 +193,27 @@
 				$("#btn-submit").on("click", function(event) 
 				{
 					event.preventDefault();
-					  
+					
 					var contentError = surveyComplete();
-					$("#messageText").text(contentError);
+					$("#messageText").html("<h4>" + contentError + "</h4>");
 
 					if(contentError === "")
 					{
-						var answers = [	Number.parseInt($("#ans-01").find(":selected").text()),
-										Number.parseInt($("#ans-02").find(":selected").text()),
-										Number.parseInt($("#ans-03").find(":selected").text()),
-										Number.parseInt($("#ans-04").find(":selected").text()),
-										Number.parseInt($("#ans-05").find(":selected").text()),
-										Number.parseInt($("#ans-06").find(":selected").text()),
-										Number.parseInt($("#ans-07").find(":selected").text()),
-										Number.parseInt($("#ans-08").find(":selected").text()),
-										Number.parseInt($("#ans-09").find(":selected").text()),
-										Number.parseInt($("#ans-10").find(":selected").text())];
+						var answers = [	Number.parseInt($("#ans-01").find(":selected").val()),
+										Number.parseInt($("#ans-02").find(":selected").val()),
+										Number.parseInt($("#ans-03").find(":selected").val()),
+										Number.parseInt($("#ans-04").find(":selected").val()),
+										Number.parseInt($("#ans-05").find(":selected").val()),
+										Number.parseInt($("#ans-06").find(":selected").val()),
+										Number.parseInt($("#ans-07").find(":selected").val()),
+										Number.parseInt($("#ans-08").find(":selected").val()),
+										Number.parseInt($("#ans-09").find(":selected").val()),
+										Number.parseInt($("#ans-10").find(":selected").val())];
+						
+						for( var i = 0; i<answers.length; i++)
+						{
+							answers[i] = Number.parseInt(answers[i]);
+						}
 
 						var newFriend = {	name: $("#name").val().trim(), 
 											photo: $("#imgUrl").val().trim(),

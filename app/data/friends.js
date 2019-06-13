@@ -30,7 +30,7 @@ var FRIENDS = function()
 
     this.addFriend = function(theFriend)
     {
-        // console.log("friends js -> addFriend()");
+        
         friends.push(theFriend);
     };
 }
