@@ -193,11 +193,9 @@
 					var error = surveyError();
 					$("#messageText").html("<h4>" + error + "</h4>");
 
-					
-
 					if(error === "")
 					{
-						var answers = [	$("#ans-01").find(":selected").val(),
+						/*var answers = [	$("#ans-01").find(":selected").val(),
 										$("#ans-02").find(":selected").val(),
 										$("#ans-03").find(":selected").val(),
 										$("#ans-04").find(":selected").val(),
@@ -213,16 +211,35 @@
 						for( var i = 0; i < answers.length; i++)
 						{
 							answers_int.push(Number.parseInt(answers[i]));
-						}
+						}*/
+
+						var ans01 = $("#ans-01").find(":selected").val();
+						var ans02 = $("#ans-02").find(":selected").val();
+						var ans03 = $("#ans-03").find(":selected").val();
+						var ans04 = $("#ans-04").find(":selected").val();
+						var ans05 = $("#ans-05").find(":selected").val();
+						var ans06 = $("#ans-06").find(":selected").val();
+						var ans07 = $("#ans-07").find(":selected").val();
+						var ans08 = $("#ans-08").find(":selected").val();
+						var ans09 = $("#ans-09").find(":selected").val();
+						var ans10 = $("#ans-10").find(":selected").val();
 
 						var newFriend = {	name: $("#name").val().trim(), 
 											photo: $("#imgUrl").val().trim(),
-											scores: answers_int};
+											scores: [	Number.parseInt(ans01),
+														Number.parseInt(ans02),
+														Number.parseInt(ans03),
+														Number.parseInt(ans04),
+														Number.parseInt(ans05),
+														Number.parseInt(ans06),
+														Number.parseInt(ans07),
+														Number.parseInt(ans08),
+														Number.parseInt(ans09),
+														Number.parseInt(ans10)]};
+							
+						compareFriends(newFriend);
 
 						addFriend(newFriend);
-
-						/// SEND newFriend to compareFriends()
-
 					}
 				});
 
@@ -234,10 +251,15 @@
 						
 						console.log("Current Friends: " + data.length);
 
+						var friends = "";
+
 						for (var i = 0; i < data.length; i++)
 						{
-							console.log("friendsList["+i+"]" + "\n" + JSON.stringify(friendsList[i]));
+							// console.log("friendsList["+i+"]" + "\n" + JSON.stringify(friendsList[i]));
+							friends += "data["+i+"].name = " + data[i].name + "\n";
 						}
+
+						alert("FRIENDS: " + "\n" + friends);
 					});
 				}
 
