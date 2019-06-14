@@ -195,24 +195,6 @@
 
 					if(error === "")
 					{
-						/*var answers = [	$("#ans-01").find(":selected").val(),
-										$("#ans-02").find(":selected").val(),
-										$("#ans-03").find(":selected").val(),
-										$("#ans-04").find(":selected").val(),
-										$("#ans-05").find(":selected").val(),
-										$("#ans-06").find(":selected").val(),
-										$("#ans-07").find(":selected").val(),
-										$("#ans-08").find(":selected").val(),
-										$("#ans-09").find(":selected").val(),
-										$("#ans-10").find(":selected").val()];
-						
-						var answers_int = [];
-
-						for( var i = 0; i < answers.length; i++)
-						{
-							answers_int.push(Number.parseInt(answers[i]));
-						}*/
-
 						var ans01 = $("#ans-01").find(":selected").val();
 						var ans02 = $("#ans-02").find(":selected").val();
 						var ans03 = $("#ans-03").find(":selected").val();
@@ -224,19 +206,31 @@
 						var ans09 = $("#ans-09").find(":selected").val();
 						var ans10 = $("#ans-10").find(":selected").val();
 
+						ans01 = Number.parseInt(ans01, 10);
+						ans02 = Number.parseInt(ans02, 10);
+						ans03 = Number.parseInt(ans03, 10);
+						ans04 = Number.parseInt(ans04, 10);
+						ans05 = Number.parseInt(ans05, 10);
+						ans06 = Number.parseInt(ans06, 10);
+						ans07 = Number.parseInt(ans07, 10);
+						ans08 = Number.parseInt(ans08, 10);
+						ans09 = Number.parseInt(ans09, 10);
+						ans10 = Number.parseInt(ans10, 10);
+
 						var newFriend = {	name: $("#name").val().trim(), 
 											photo: $("#imgUrl").val().trim(),
-											scores: [	Number.parseInt(ans01),
-														Number.parseInt(ans02),
-														Number.parseInt(ans03),
-														Number.parseInt(ans04),
-														Number.parseInt(ans05),
-														Number.parseInt(ans06),
-														Number.parseInt(ans07),
-														Number.parseInt(ans08),
-														Number.parseInt(ans09),
-														Number.parseInt(ans10)]};
-							
+											scores: [	ans01,
+														ans02,
+														ans03,
+														ans04,
+														ans05,
+														ans06,
+														ans07,
+														ans08,
+														ans09,
+														ans10]};
+
+						console.log("*****" + typeof newFriend.scores[0]);
 						compareFriends(newFriend);
 
 						addFriend(newFriend);
@@ -247,19 +241,36 @@
 				{
 					$.get("/api/friends/", function(data) 
 					{
-						console.log("API DATA: " + "\n" + JSON.stringify(data));
-						
-						console.log("Current Friends: " + data.length);
-
 						var friends = "";
+
+						var friendScores = new Array(data.length);
 
 						for (var i = 0; i < data.length; i++)
 						{
-							// console.log("friendsList["+i+"]" + "\n" + JSON.stringify(friendsList[i]));
-							friends += "data["+i+"].name = " + data[i].name + "\n";
+							var tmp = 0;
+
+							for (var j = 0; j < data[i].scores.length; j++)
+							{
+								 var diff = Math.abs(Number.parseInt(newFriend.scores[j]) - Number.parseInt(data[i].scores[j]));
+
+								 tmp += diff;
+
+								 friendScores[i] = tmp;
+							}
 						}
 
-						alert("FRIENDS: " + "\n" + friends);
+						var indexOfLowestValue = 0;
+
+						for (var k = 0; k < friendScores.length; k++)
+						{
+							if(friendScores[k] < friendScores[indexOfLowestValue])
+							{
+								indexOfLowestValue = k;
+							}
+						}
+
+						alert("All things considered, " + data[indexOfLowestValue].name + " looks to be your best bet for a BFF!");
+
 					});
 				}
 
@@ -267,8 +278,6 @@
 				{
 					$.post("/api/friends", newFriend).then(function(data) 
 					{
-						console.log(data);
-						
 						$("#name").val("");
 						photo: $("#imgUrl").val("");
 						$("#ans-01").val("");
@@ -285,8 +294,6 @@
 						alert("Thank you!" + "\n" + "Survey submitted.");
 					});
 				}
-
-
 
 				function surveyError()
 				{
